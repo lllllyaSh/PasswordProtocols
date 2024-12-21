@@ -22,7 +22,8 @@ python3 gen pass.txt UTF-16-LE MD4 1000 out.txt
 Пример запуска
 
 	python3 crack wordlist.txt UTF-8 SHA1 hashlist.txt
-		qwerty123:1f341324bf12c4590c……
+
+	qwerty123:1f341324bf12c4590c……
 
 Тайминги нахождения паролей по известным хешам:
 1. 10 хешей - 0.0763540267944336 секунд
