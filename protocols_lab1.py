@@ -2,6 +2,8 @@ import hashlib
 import random
 import sys
 import codecs
+from passlib.hash import nthash
+
 
 def hash_password(password, hashfunc):
     if hashfunc == "MD5":
@@ -13,7 +15,7 @@ def hash_password(password, hashfunc):
     elif hashfunc == "SHA-512":
         return hashlib.sha512(password).hexdigest()
     elif hashfunc == "MD4":
-        return hashlib.new('md4', password).hexdigest()
+        return nthash.hash(password)
     else:
         return None
 
@@ -32,4 +34,4 @@ def main(input_file, encoding, hashfunc, output_count, output_file):
             f.write(h + "\n")
 
 if __name__ == "__main__":
-    main(sys.argv[1], sys.argv[2], sys.argv[3], int(sys.argv[4]), sys.argv[5])
+    main(sys.argv[1], sys.argv[2], sys.argv[3], int(sys.argv[4]), sys.argv[5])  

@@ -3,6 +3,7 @@ import hashlib
 import sys
 import codecs
 import time
+from passlib.hash import nthash
 
 def hash_password(password, hashfunc):
     if hashfunc == "MD5":
@@ -13,6 +14,8 @@ def hash_password(password, hashfunc):
         return hashlib.sha256(password).hexdigest()
     elif hashfunc == "SHA-512":
         return hashlib.sha512(password).hexdigest()
+    elif hashfunc == "MD4":
+        return nthash.hash(password)
     else:
         return None
 
@@ -30,6 +33,10 @@ def worker(passwords, hashfunc, hashes, queue):
             queue.put(result)
 
 def main(dictionary, encoding, hashfunc, hash_file):
+    if len(sys.argv) != 5:
+        print("Неправильное количество аргументов!")
+        print("Использование: python3 " + sys.argv[0] + " wordlist.txt кодировка hash_type hashlist.txt")
+        return
     with codecs.open(dictionary, 'r', encoding) as f:
         passwords = f.read().splitlines()
 
