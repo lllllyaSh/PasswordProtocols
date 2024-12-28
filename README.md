@@ -24,7 +24,7 @@ python3 protocols_lab1.py pass.txt UTF-16-LE MD4 1000 out.txt
 Написать простую утилиту для восстановления паролей по словарю. На вход подается текстовый файл – словарь – с паролями-кандидатами и текстовый файл с хешами, хеш-функцию и кодировку. На выходе: пароль + найденный в файле хеш, который ему соответствует. Распараллелить работу по ядрам с помощью multiprocessing по данным.
 Пример запуска
 
-	python3 crack_passwd.py wordlist.txt UTF-8 SHA1 hashlist.txt
+	python3 crack_passwd.py wordlist.txt UTF-8 SHA1 out.txt
 
 	qwerty123:1f341324bf12c4590c……
 
